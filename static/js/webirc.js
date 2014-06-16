@@ -496,7 +496,7 @@ webircApp.directive('chatlog', function() {
 				if (activity.quitMessage) {
 					msg = ' (' + activity.quitMessage + ')';
 				}
-				return fourCol('activity_part', '', colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' quit ', displayHost(), msg);
+				return fourCol('activity_part', '', colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), displayHost(), ' quit ', msg);
 			},
 			'SetTopic': function(activity) {
 				return fourCol('activity_info', 'topic', colDot('three', null), displayNick(activity.newTopic), displayDim(' by'), colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)));
@@ -522,7 +522,7 @@ webircApp.directive('chatlog', function() {
 		function fourCol(className, nick, dot, text, text2, text3, text4, text5) {
 			var theStuff = angular.element('<div />').addClass('activityblock');
 
-			//todo: learn angular.js
+			//todo: learn angular.js and javascript in general
 			if (className == 'activity_mentionme') {
 				theStuff.addClass('activity_mentionme');
 			} else if (className == 'activity_notice') {
@@ -534,13 +534,13 @@ webircApp.directive('chatlog', function() {
 			} else if (className == 'activity_dim') {
 				theStuff.addClass('activity_dim');
 			} else if (className == 'activity_mychat') {
-					theStuff.addClass('activity_mychat');
+				theStuff.addClass('activity_mychat');
 			} else if (className == 'activity_whois') {
-					theStuff.addClass('activity_whois');
+				theStuff.addClass('activity_whois');
 			} else if (className == 'activity_join') {
-					theStuff.addClass('activity_join');
+				theStuff.addClass('activity_join');
 			} else if (className == 'activity_part') {
-					theStuff.addClass('activity_part');
+				theStuff.addClass('activity_part');
 			}
 
 			theStuff.append(angular.element('<div />').addClass('colnick').append(nick));
