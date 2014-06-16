@@ -522,6 +522,7 @@ webircApp.directive('chatlog', function() {
 		function fourCol(className, nick, dot, text, text2, text3, text4, text5) {
 			var theStuff = angular.element('<div />').addClass('activityblock');
 
+			//todo: learn angular.js
 			if (className == 'activity_mentionme') {
 				theStuff.addClass('activity_mentionme');
 			} else if (className == 'activity_notice') {
