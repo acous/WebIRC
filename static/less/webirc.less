@@ -9,6 +9,8 @@
 @maintext: #676767;
 @highlight: #2D7DDC;
 @alert: #CB0012;
+@nickname: #999;
+@whois: #66DAF1;
 
 body {
 	background-color: #FFF;
@@ -111,7 +113,7 @@ input {
 .leftbarcell {
 	display: table-cell;
 	width: 160px;
-	padding: 10px 10px 10px 0px;
+	padding: 8px 10px 10px 0px;
     background-color: #F9F8F8;
 }
 
@@ -153,7 +155,7 @@ span.chatlogLink {
 // Userlist
 
 .userlist {
-	padding: 10px 0px 6px 12px;
+	padding: 8px 0px 6px 12px;
     //background-color: #F9F8F8;
 	.chatlog-and-userlist();
 }
@@ -161,6 +163,7 @@ span.chatlogLink {
 .userlistcell {
 	display: table-cell;
 	width: 140px;
+    color: @nickname;
 	vertical-align: bottom;
 }
 
@@ -380,10 +383,11 @@ span.chatlogLink {
 }
 .colnick {
     text-align: right;
-    color: #BBB;
+    color: @nickname;
     flex: 0 0 100px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .coldot {
@@ -406,11 +410,10 @@ span.chatlogLink {
     }
     .info {
         font-family: 'FontAwesome';
-        color: #DDD;
         font-size: 9px;
     }
     .circle {  
-        background-color: #FFF !important;
+        //background-color: #FFF !important;
         width: 4px;
         height: 4px;
         border-radius: 4px;
@@ -435,7 +438,7 @@ span.chatlogLink {
     }
     .star {
         font-family: 'FontAwesome';
-        font-size: 10px;
+        font-size: 9px;
         padding: 0 5px;
     }
     
@@ -448,8 +451,16 @@ span.chatlogLink {
 	word-wrap: break-word;
 }
 
+.coltext .coldot {
+    display: inline-flex;
+}
+
 .dim2 {
     color: #d8d8d8;
+}
+
+.nick {
+    color: @nickname;
 }
 
 .coltime {
@@ -491,8 +502,17 @@ span.chatlogLink {
     }
 }
 
+.activity_whois {
+    .colnick, .coltext, .coldot {
+        color: @whois;
+    }
+}
+
 .activity_mychat {
     .colnick {
+        color: @highlight;
+    }
+    .nick {
         color: @highlight;
     }
 }
