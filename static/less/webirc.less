@@ -11,6 +11,8 @@
 @alert: #CB0012;
 @nickname: #999;
 @whois: #66DAF1;
+@joinarrow: #A6E807;
+@info: #AD75F4;
 
 body {
 	background-color: #FFF;
@@ -428,8 +430,8 @@ span.chatlogLink {
     }
     .three {
         font-family: 'FontAwesome';
-        font-size: 10px;
-        padding: 0 7px;
+        font-size: 12px;
+        padding: 1px 5px 0;
     }
     .warn {
         font-family: 'FontAwesome';
@@ -453,6 +455,7 @@ span.chatlogLink {
 
 .coltext .coldot {
     display: inline-flex;
+    margin-left: 1px;
 }
 
 .dim2 {
@@ -481,6 +484,9 @@ span.chatlogLink {
     .colnick, .coltext, .coldot {
         color: @alert;
     }
+    .colnick {
+        font-family: 'FontAwesome';
+    }
 }
 
 .activity_mentionme {
@@ -492,7 +498,11 @@ span.chatlogLink {
 
 .activity_info {
     .colnick, .coltext, .coldot {
-        color: #A6E807;
+        color: @info;
+    }
+    .colnick {
+        text-transform: uppercase;
+        font-size: 10px;
     }
 }
 
@@ -517,26 +527,22 @@ span.chatlogLink {
     }
 }
 
+.activity_join {
+    .colnick {
+        font-family: 'FontAwesome';
+        color: @joinarrow;
+    }
+}
+
+.activity_part {
+    .colnick {
+        font-family: 'FontAwesome';
+        color: @alert;
+    }
+}
+
 .activity {
 	.white-space(pre-wrap);
 	word-wrap: break-word;
-
-
-	&_info:extend(.activity) {
-		color: #A6E807;
-	}
-	&_kick:extend(.activity) {
-		color: #66DAF1;
-	}
-	&_mentionme:extend(.activity) {
-		color: @highlight;
-	}
-	&_mychat:extend(.activity) {
-		color: #FE9700;
-	}
-
-	&_whois:extend(.activity) {
-		color: #66DAF1;
-	}
 }
 

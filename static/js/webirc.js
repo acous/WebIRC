@@ -457,24 +457,24 @@ webircApp.directive('chatlog', function() {
 				return fourCol('activity_dim', null, colDot('info', '#DDD'), activity.text);
 			},
 			'Join': function(activity) {
-				return fourCol('activity_dim', null, colDot('dot', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' joined ', displayHost());
+				return fourCol('activity_join', '', colDot('dot', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost());
 			},
 			'Kick': function(activity) {
 				var msg = '';
 				if (activity.kickMessage) {
 					msg = ' (' + activity.kickMessage + ')';
 				}
-				return fourCol('activity_error', null, colDot('circle', getNickColor(activity.targetNick)), displayNick(activity.targetNick), ' was kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
+				return fourCol('activity_error', '', colDot('circle', getNickColor(activity.targetNick)), displayNick(activity.targetNick), ' was kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
 			},
 			'KickMe': function(activity) {
 				var msg = '';
 				if (activity.kickMessage) {
 					msg = ' (' + activity.kickMessage + ')';
 				}
-				return fourCol('activity_error', null, colDot('warn', 'red'), 'You were kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
+				return fourCol('activity_error', '', colDot('warn', 'red'), 'You were kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
 			},
 			'ModeChange': function(activity) {
-				return fourCol('activity_info', null, colDot('star', getNickColor(originNickOrName(activity.origin))), originNickOrName(activity.origin) + ' sets mode: ' + activity.modes + ' ' + activity.modeArgs.join(' '));
+				return fourCol('activity_info', 'mode', colDot('three', null), activity.modes + ' ' + activity.modeArgs.join(' '), angular.element('<span />').addClass('dim2').append(' by'), colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)));
 			},
 			'MyActionMessage': function(activity) {
 				return fourCol('activity_mychat', null, colDot('star', getNickColor(activity.nick)), displayNick(activity.nick), ' ' + activity.text);
@@ -489,17 +489,17 @@ webircApp.directive('chatlog', function() {
 				return fourCol('activity_notice', originNickOrName(activity.origin), colDot('three', null), activity.text);
 			},
 			'Part': function(activity) {
-				return fourCol('activity_dim', null, colDot('circle', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' left ', displayHost());
+				return fourCol('activity_part', '', colDot('circle', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost());
 			},
 			'Quit': function(activity) {
 				var msg = '';
 				if (activity.quitMessage) {
 					msg = ' (' + activity.quitMessage + ')';
 				}
-				return fourCol('activity_dim', null, colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), displayHost(), ' quit', msg);
+				return fourCol('activity_part', '', colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' quit ', displayHost(), msg);
 			},
 			'SetTopic': function(activity) {
-				return fourCol('activity_info', null, colDot('star', getNickColor(originNickOrName(activity.origin))), originNickOrName(activity.origin) + ' sets topic to: ' + activity.newTopic);
+				return fourCol('activity_info', 'topic', colDot('three', null), displayNick(activity.newTopic), displayDim(' by'), colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)));
 			},
 			'Text': function(activity) {
 				return basicText('activity', activity.text);
@@ -536,6 +536,10 @@ webircApp.directive('chatlog', function() {
 					theStuff.addClass('activity_mychat');
 			} else if (className == 'activity_whois') {
 					theStuff.addClass('activity_whois');
+			} else if (className == 'activity_join') {
+					theStuff.addClass('activity_join');
+			} else if (className == 'activity_part') {
+					theStuff.addClass('activity_part');
 			}
 
 			theStuff.append(angular.element('<div />').addClass('colnick').append(nick));
@@ -579,11 +583,14 @@ webircApp.directive('chatlog', function() {
 			}
 		}
 
-		function displayHost() {
-			return angular.element('<span />').addClass('dim2').append('(' + activity.who.user + '@' + activity.who.host + ')');
+		function displayDim(msg) {
+			return angular.element('<span />').addClass('dim2').append(msg);
 		}
-		function displayNick(nick) {
-			return angular.element('<span />').addClass('nick').append(nick);
+		function displayNick(msg) {
+			return angular.element('<span />').addClass('nick').append(msg);
+		}
+		function displayHost() {
+			return displayDim('(' + activity.who.user + '@' + activity.who.host + ')');
 		}
 	};
 });
