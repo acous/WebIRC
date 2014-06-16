@@ -38,12 +38,12 @@
 		<div class="fulltable">
 			<div class="tablerow">
 				<div class="leftbarcell">
-					<div addserverbutton hover-label="'Add server'" class="addserverbutton"></div>
 					<div ng-repeat="server in state.servers" class="windowbuttonblock">
-						<div windowbutton entity="server" label="server.label" alt-label="'New Server'" hover-label="server.host ? (server.host + ':' + server.port + (server.ssl ? ' SSL' : '')) : 'New Server'" optionsbutton="requestOpenServerOptions(server.entityId)" class="windowbutton"></div>
+						<div windowbutton entity="server" label="server.label" alt-label="'New Server'" hover-label="server.host ? (server.host + ':' + server.port + (server.ssl ? ' SSL' : '')) : 'New Server'" optionsbutton="requestOpenServerOptions(server.entityId)" class="windowbuttonserver"></div>
 						<div windowbutton entity="channel" ng-repeat="channel in server.channels" label="channel.name" class="windowbutton"></div>
 						<div windowbutton entity="query" ng-repeat="query in server.queries" label="query.name" class="windowbutton"></div>
 					</div>
+                    <div addserverbutton hover-label="'Add server'" class="addserverbutton"></div>
 				</div>
 				<div class="rightcell">
 					<div ng-repeat="server in state.servers">
@@ -64,7 +64,8 @@
 									</div>
 									<div class="userlistcell">
 										<div userlist class="userlist" ng-style="{height: fullHeight}">
-											<div ng-repeat="user in channel.userlist" class="userlistentry" ng-class="getUserlistClass(user)">{{getUserlistNamePrefix(user)}}{{user.nick}}</div>
+                                            <div class="userlistheader">{{channel.userlist.length}} users</div>
+											<div ng-repeat="user in channel.userlist" class="userlistentry" ng-class="getUserlistClass(user)"><span class="dim2">{{getUserlistNamePrefix(user)}}</span> {{user.nick}}</div>
 										</div>
 									</div>
 								</div>
@@ -72,9 +73,9 @@
 						</div>
 						<div ng-repeat="query in server.queries" ng-show="isActiveEntity(query.entityId)">
 							<div chatlog activity-log="query.activityLog" server="server" class="chatlog" resize-maincell="query" ng-style="{height: maincellHeight}"></div>
-							<div class="chatboxwrapper">
-								<textarea chatbox chatbox-autocomplete chatbox-autogrow entity="query" class="chatbox" focus-key="Chatbox"></textarea>
-							</div>
+                            <div class="chatboxwrapper">
+                                <textarea chatbox chatbox-autocomplete chatbox-autogrow entity="query" class="chatbox" focus-key="Chatbox"></textarea>
+                            </div>
 						</div>
 					</div>
 				</div>

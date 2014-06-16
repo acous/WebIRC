@@ -6,13 +6,18 @@
 	font-style: normal;
 }
 
+@maintext: #676767;
+@highlight: #2D7DDC;
+@alert: #CB0012;
+
 body {
-	background-color: #272822;
-	color: #f8f8f1;
-	font-family: 'Varela Round', sans-serif;
+	background-color: #FFF;
+	color: @maintext;
+	font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
-	line-height: 1.15;
+	line-height: 20px;
 }
 
 html, body, body > div {
@@ -106,19 +111,20 @@ input {
 .leftbarcell {
 	display: table-cell;
 	width: 160px;
-	padding: 0px 0px 10px 5px;
+	padding: 10px 10px 10px 0px;
+    background-color: #F9F8F8;
 }
 
 .rightcell {
 	display: table-cell;
 	vertical-align: bottom;
+    padding: 0;
 }
 
 // Chatlog and userlist
 
 .chatlog-and-userlist() { // for lack of a better name
 	box-sizing: border-box;
-
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -126,7 +132,7 @@ input {
 // Chatlog
 
 .chatlog {
-	padding: 6px 12px 6px 6px;
+	padding: 8px 12px 0 12px;
 
 	.chatlog-and-userlist();
 }
@@ -147,19 +153,27 @@ span.chatlogLink {
 // Userlist
 
 .userlist {
-	padding: 6px 5px 6px 0px;
-
+	padding: 10px 0px 6px 12px;
+    //background-color: #F9F8F8;
 	.chatlog-and-userlist();
 }
 
 .userlistcell {
 	display: table-cell;
-	width: 180px;
+	width: 140px;
 	vertical-align: bottom;
 }
 
+.userlistheader {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #BBB;
+    font-size: 10px;
+    font-weight: 400;
+}
+
 .userlistentry {
-	padding: 1px 2px 0px 2px;
+	padding: 1px 2px 0px 0px;
 	text-overflow: ellipsis;
 	.white-space(nowrap);
 	overflow: hidden;
@@ -186,15 +200,20 @@ span.chatlogLink {
 // Chatbox
 
 .chatboxwrapper {
-	padding: 3px 3px 3px 3px;
+    box-sizing: border-box;
+    padding: 3px;
+    border: 1px #DEDEDE solid;
+    border-radius: 4px;
+    height: 25px;
 }
 .chatbox, .chatboxshadow {
-	padding: 0px 0px 0px 0px;
-	border: 0px;
+    box-sizing: border-box;
+    border: none;
+    //border: 1px #DEDEDE solid;
 	font: inherit;
 	resize: none;
-	background-color: #272822;
-	color: #FE9700;
+	background-color: #FFF;
+	color: @maintext;
 	outline: none;
 	vertical-align: top;
 }
@@ -220,8 +239,7 @@ span.chatlogLink {
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	height: 28px;
-
+    line-height: 0;
 	&:active {
 		position: relative;
 		top: 1px;
@@ -233,22 +251,25 @@ span.chatlogLink {
 
 	&_iconcell {
 		display: table-cell;
-		width: 25px;
+		width: 21px;
+        text-overflow: ellipsis;
+        color: @maintext;
 		vertical-align: middle;
+        height: 21px;
+        font-size: 10px;
 
-		&:not(:hover) {
 			.sidebutton_iconinner_addserver {
-				color: #7C7C6D;
+				color: @maintext;
 			}
 
 			.sidebutton_iconinner_options {
-				color: #7C7C6D;
+				color: @maintext;
 			}
 
 			.sidebutton_iconinner_close {
-				color: #7C7C6D;
+				color: @maintext;
 			}
-		}
+
 	}
 }
 
@@ -256,30 +277,35 @@ span.chatlogLink {
 	margin-top: 3px;
 
 	&_maincell {
-		display: table-cell;
+		display: none;
 	}
 
 	.sidebutton_iconcell {
 		cursor: pointer;
 	}
+    .sidebutton_iconinner_addserver {
+        text-align: left;
+        padding-left: 12px;
+    }
 }
 
 .windowbutton:extend(.sidebutton) {
 	cursor: pointer;
-
 	&_alttitle {
-		font-style: italic;
+		color: #DDD;
 	}
 
 	&_current {
-		background-color: #3E3E32;
-		border-radius: 5px;
+        color: @highlight;
+        font-weight: 400;
+        //height: 10px;
 	}
 
 	&_maincell {
 		display: table-cell;
-		height: 18px;
-		padding: 5px 2px 5px 7px;
+        font-size: 14px;
+		height: 15px;
+		padding: 3px 0 3px 12px;
 		text-overflow: ellipsis;
 		.white-space(nowrap);
 		overflow: hidden;
@@ -287,24 +313,43 @@ span.chatlogLink {
 	}
 }
 
+.windowbuttonserver:extend(.windowbutton) {
+    .windowbutton_maincell:extend(.windowbutton_maincell) {
+        text-transform: uppercase;
+        color: #BBB;
+        font-size: 10px !important;
+        font-weight: 400;
+    }
+}
+
+.windowbutton_current .windowbutton_maincell {
+    color: #2D7DDC !important;
+}
+
 .sidebutton_iconinner {
-	padding: 3px;
-	line-height: 18px;
-	font-size: 15px;
-	border-radius: 5px;
-	text-align: center;
+    color: #FFF;
+    font-size: 9px;
+    text-align: center;
+    margin: 0;
+    padding: 3px auto;
+    height: 14px;
+    border-radius: 7px;
+
+    line-height: 14px;
 
 	&_alert:extend(.sidebutton_iconinner) {
-		background-color: #F90071;
+		background-color: @alert;
+        text-shadow: 0 1px #888;        
 	}
 
 	&_event:extend(.sidebutton_iconinner) {
-		background-color: #3E3E32;
+		background-color: #CACACA;
+        text-shadow: 0 1px #888;        
 	}
 
 	&_close:extend(.sidebutton_iconinner) {
 		font-family: 'FontAwesome';
-
+        font-size: 14px;
 		&:before {
 			content: '\f00d';
 		}
@@ -312,7 +357,7 @@ span.chatlogLink {
 
 	&_addserver:extend(.sidebutton_iconinner) {
 		font-family: 'FontAwesome';
-
+        font-size: 14px;
 		&:before {
 			content: '\f067';
 		}
@@ -320,7 +365,7 @@ span.chatlogLink {
 
 	&_options:extend(.sidebutton_iconinner) {
 		font-family: 'FontAwesome';
-
+        font-size: 14px;
 		&:before {
 			content: '\f0c9';
 		}
@@ -330,16 +375,133 @@ span.chatlogLink {
 // Activities
 
 .activityblock {
-	padding: 1px 0px 1px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.colnick {
+    text-align: right;
+    color: #BBB;
+    flex: 0 0 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.coldot {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    //background-color: #fcc;
+    text-align: center;
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        margin: 6px;
+    }
+    .pipe {
+        width: 4px;
+        height: 10px;
+        margin: 5px 8px 5px 8px;
+    }
+    .info {
+        font-family: 'FontAwesome';
+        color: #DDD;
+        font-size: 9px;
+    }
+    .circle {  
+        background-color: #FFF !important;
+        width: 4px;
+        height: 4px;
+        border-radius: 4px;
+        margin: 6px;
+    }
+    .circlethin {  
+        background-color: #FFF !important;
+        width: 6px;
+        height: 6px;
+        border-radius: 4px;
+        margin: 6px;
+    }
+    .three {
+        font-family: 'FontAwesome';
+        font-size: 10px;
+        padding: 0 7px;
+    }
+    .warn {
+        font-family: 'FontAwesome';
+        font-size: 10px;
+        padding: 0 7px;
+    }
+    .star {
+        font-family: 'FontAwesome';
+        font-size: 10px;
+        padding: 0 5px;
+    }
+    
+}
+
+.coltext {
+    color: #262626;
+    flex: 1 1 auto;
+	.white-space(pre-wrap);
+	word-wrap: break-word;
+}
+
+.dim2 {
+    color: #d8d8d8;
+}
+
+.coltime {
+    flex: 0 0 auto;
+    font-size: 9px;
+    color: #CACACA;
+    padding-left: 4px;
+}
+
+
+.activity_notice {
+    .colnick, .coltext, .coldot {
+        color: #AD75F4;
+    }
+}
+
+.activity_error {
+    .colnick, .coltext, .coldot {
+        color: @alert;
+    }
+}
+
+.activity_mentionme {
+    .colnick, .coltext, .coldot {
+        color: #FE9700;
+    }
+}
+
+
+.activity_info {
+    .colnick, .coltext, .coldot {
+        color: #A6E807;
+    }
+}
+
+.activity_dim {
+    .colnick, .coltext, .coldot {
+        color: #CACACA;
+    }
+}
+
+.activity_mychat {
+    .colnick {
+        color: @highlight;
+    }
 }
 
 .activity {
 	.white-space(pre-wrap);
 	word-wrap: break-word;
 
-	&_error:extend(.activity) {
-		color: #F90071;
-	}
+
 	&_info:extend(.activity) {
 		color: #A6E807;
 	}
@@ -347,14 +509,12 @@ span.chatlogLink {
 		color: #66DAF1;
 	}
 	&_mentionme:extend(.activity) {
-		color: #E6DF6D;
+		color: @highlight;
 	}
 	&_mychat:extend(.activity) {
 		color: #FE9700;
 	}
-	&_notice:extend(.activity) {
-		color: #AD75F4;
-	}
+
 	&_whois:extend(.activity) {
 		color: #66DAF1;
 	}
