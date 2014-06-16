@@ -1,6 +1,6 @@
 ### acous/WebIRC
 
-Redesigning the UI of @pavben's sweet irc client.
+Hackily and noobishly redesigning the UI of pavben's sweet IRC Client.
 
 # WebIRC
 
