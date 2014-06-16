@@ -13,6 +13,7 @@
 @whois: #66DAF1;
 @joinarrow: #A6E807;
 @info: #AD75F4;
+@dim1: #CACACA;
 
 body {
 	background-color: #FFF;
@@ -508,7 +509,7 @@ span.chatlogLink {
 
 .activity_dim {
     .colnick, .coltext, .coldot {
-        color: #CACACA;
+        color: @dim1;
     }
 }
 
@@ -532,12 +533,18 @@ span.chatlogLink {
         font-family: 'FontAwesome';
         color: @joinarrow;
     }
+    .coltext {
+        color: @dim1;
+    }
 }
 
 .activity_part {
     .colnick {
         font-family: 'FontAwesome';
         color: @alert;
+    }
+    .coltext {
+        color: @dim1;
     }
 }
 

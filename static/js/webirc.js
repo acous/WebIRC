@@ -457,7 +457,7 @@ webircApp.directive('chatlog', function() {
 				return fourCol('activity_dim', null, colDot('info', '#DDD'), activity.text);
 			},
 			'Join': function(activity) {
-				return fourCol('activity_join', '', colDot('dot', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost());
+				return fourCol('activity_join', '', colDot('dot', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost(), ' joined');
 			},
 			'Kick': function(activity) {
 				var msg = '';
@@ -489,14 +489,14 @@ webircApp.directive('chatlog', function() {
 				return fourCol('activity_notice', originNickOrName(activity.origin), colDot('three', null), activity.text);
 			},
 			'Part': function(activity) {
-				return fourCol('activity_part', '', colDot('circle', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost());
+				return fourCol('activity_part', '', colDot('circle', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost(), ' left');
 			},
 			'Quit': function(activity) {
 				var msg = '';
 				if (activity.quitMessage) {
 					msg = ' (' + activity.quitMessage + ')';
 				}
-				return fourCol('activity_part', '', colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' quit ', displayHost(), msg);
+				return fourCol('activity_part', '', colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' quit ', displayHost(), msg);
 			},
 			'SetTopic': function(activity) {
 				return fourCol('activity_info', 'topic', colDot('three', null), displayNick(activity.newTopic), displayDim(' by'), colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)));
