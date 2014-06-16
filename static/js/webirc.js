@@ -464,14 +464,14 @@ webircApp.directive('chatlog', function() {
 				if (activity.kickMessage) {
 					msg = ' (' + activity.kickMessage + ')';
 				}
-				return fourCol('activity_error', '', colDot('circle', getNickColor(activity.targetNick)), displayNick(activity.targetNick), ' was kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
+				return fourCol('activity_error', '', colDot('circle', getNickColor(activity.targetNick)), displayNick(activity.targetNick), ' was kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
 			},
 			'KickMe': function(activity) {
 				var msg = '';
 				if (activity.kickMessage) {
 					msg = ' (' + activity.kickMessage + ')';
 				}
-				return fourCol('activity_error', '', colDot('warn', 'red'), 'You were kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
+				return fourCol('activity_error', '', colDot('warn', 'red'), 'You were kicked by', colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)), msg);
 			},
 			'ModeChange': function(activity) {
 				return fourCol('activity_info', 'mode', colDot('three', null), activity.modes + ' ' + activity.modeArgs.join(' '), angular.element('<span />').addClass('dim2').append(' by'), colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)));
