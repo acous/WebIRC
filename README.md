@@ -7,7 +7,7 @@ Hackily and noobishly redesigning the UI of pavben's sweet IRC Client.
 This is a new concept for an always-on web-based IRC client. WebIRC runs as a server and is always connected to your favorite IRC networks. Seamlessly open the same session from home, work, and your mobile devices to continue exactly where you left off.
 
 ## Screenshot
-![screenshot](https://f.cloud.github.com/assets/2124408/2074550/7bb2bcf8-8d7c-11e3-9a03-56133d9379ff.png)
+![screenshot](https://dl.dropboxusercontent.com/u/103004/webirc0.1.png)
 
 
 ## Setting it up
