@@ -1,3 +1,7 @@
+### acous/WebIRC
+
+Redesigning the UI of @pavben's sweet irc client.
+
 # WebIRC
 
 This is a new concept for an always-on web-based IRC client. WebIRC runs as a server and is always connected to your favorite IRC networks. Seamlessly open the same session from home, work, and your mobile devices to continue exactly where you left off.
