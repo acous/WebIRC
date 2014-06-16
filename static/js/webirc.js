@@ -496,7 +496,7 @@ webircApp.directive('chatlog', function() {
 				if (activity.quitMessage) {
 					msg = ' (' + activity.quitMessage + ')';
 				}
-				return fourCol('activity_part', '', colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), displayHost(), ' quit ', msg);
+				return fourCol('activity_part', '', colDot('circlethin', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost(), ' quit ', msg);
 			},
 			'SetTopic': function(activity) {
 				return fourCol('activity_info', 'topic', colDot('three', null), displayNick(activity.newTopic), displayDim(' by'), colDot('star', getNickColor(originNickOrName(activity.origin))), displayNick(originNickOrName(activity.origin)));
