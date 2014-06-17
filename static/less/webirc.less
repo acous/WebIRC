@@ -5,21 +5,55 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
+/*
+@mainbg: #FFF;
 @maintext: #676767;
+@nickname: #999;
+@headers: #BBB;
+
+@dim1: #999;
+@dim2: #CACACA;
+@dim3: #d8d8d8;
+
+@leftbg: #F8F8F8;
+
 @highlight: #2D7DDC;
 @alert: #CB0012;
-@nickname: #999;
 @whois: #66DAF1;
-@joinarrow: #A6E807;
+@notice: #AD75F4;
+@mention: #FE9700;
 @info: #AD75F4;
-@dim1: #CACACA;
+
+@joinarrow: #A6E807;
+@partarrow: @alert;
+*/
+@mainbg: #111;
+@maintext: #a2a2a2;
+@chattext: #ccc;
+@nickname: #ababab;
+@headers: #666;
+
+@dim1: #666;
+@dim2: #555;
+@dim3: #444;
+
+@leftbg: #222;
+
+@highlight: #2D7DDC;
+@alert: #CB0012;
+@whois: #66DAF1;
+@notice: #AD75F4;
+@mention: #FE9700;
+@info: #AD75F4;
+
+@joinarrow: #A6E807;
+@partarrow: @alert;
 
 body {
-	background-color: #FFF;
+	background-color: @mainbg;
 	color: @maintext;
 	font-family: 'Helvetica Neue', sans-serif;
-    font-size: 12px;
+  font-size: 12px;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	line-height: 20px;
@@ -98,7 +132,7 @@ input {
 }
 
 .button1:hover {
-	background-color: #3E3E32;
+	background-color: @dim3;
 	border-radius: 5px;
 }
 
@@ -117,13 +151,13 @@ input {
 	display: table-cell;
 	width: 160px;
 	padding: 8px 10px 10px 0px;
-    background-color: #F9F8F8;
+  background-color: @leftbg;
 }
 
 .rightcell {
 	display: table-cell;
 	vertical-align: bottom;
-    padding: 0;
+  padding: 0;
 }
 
 // Chatlog and userlist
@@ -138,7 +172,6 @@ input {
 
 .chatlog {
 	padding: 8px 12px 0 12px;
-
 	.chatlog-and-userlist();
 }
 
@@ -159,21 +192,20 @@ span.chatlogLink {
 
 .userlist {
 	padding: 8px 0px 6px 12px;
-    //background-color: #F9F8F8;
 	.chatlog-and-userlist();
 }
 
 .userlistcell {
 	display: table-cell;
 	width: 140px;
-    color: @nickname;
+  color: @nickname;
 	vertical-align: bottom;
 }
 
 .userlistheader {
     text-decoration: none;
     text-transform: uppercase;
-    color: #BBB;
+    color: @headers;
     font-size: 10px;
     font-weight: 400;
 }
@@ -185,43 +217,26 @@ span.chatlogLink {
 	overflow: hidden;
 }
 
-.userlist_color {
-	&_owner {
-		color: #F90071;
-	}
-	&_admin {
-		color: #66DAF1;
-	}
-	&_op {
-		color: #A6E807;
-	}
-	&_halfop {
-		color: #AD75F4;
-	}
-	&_voice {
-		color: #FE9700;
-	}
-}
-
 // Chatbox
 
 .chatboxwrapper {
     box-sizing: border-box;
     padding: 3px;
-    border: 1px #DEDEDE solid;
-    border-radius: 4px;
+    border: 1px @dim3 solid;
+    //border-radius: 4px;
+		border-left: none;
+		border-bottom: none;
     height: 25px;
 }
 .chatbox, .chatboxshadow {
     box-sizing: border-box;
     border: none;
-    //border: 1px #DEDEDE solid;
-	font: inherit;
-	resize: none;
-	background-color: #FFF;
-	color: @maintext;
-	outline: none;
-	vertical-align: top;
+		font: inherit;
+		resize: none;
+		background-color: @mainbg;
+		color: @maintext;
+		outline: none;
+		vertical-align: top;
 }
 .chatbox {
 	width: 100%;
@@ -258,23 +273,23 @@ span.chatlogLink {
 	&_iconcell {
 		display: table-cell;
 		width: 21px;
-        text-overflow: ellipsis;
-        color: @maintext;
+    text-overflow: ellipsis;
+    color: @maintext;
 		vertical-align: middle;
-        height: 21px;
-        font-size: 10px;
+    height: 21px;
+    font-size: 10px;
 
-			.sidebutton_iconinner_addserver {
-				color: @maintext;
-			}
+		.sidebutton_iconinner_addserver {
+			color: @maintext;
+		}
 
-			.sidebutton_iconinner_options {
-				color: @maintext;
-			}
+		.sidebutton_iconinner_options {
+			color: @maintext;
+		}
 
-			.sidebutton_iconinner_close {
-				color: @maintext;
-			}
+		.sidebutton_iconinner_close {
+			color: @maintext;
+		}
 
 	}
 }
@@ -309,7 +324,7 @@ span.chatlogLink {
 
 	&_maincell {
 		display: table-cell;
-        font-size: 14px;
+    font-size: 14px;
 		height: 15px;
 		padding: 3px 0 3px 12px;
 		text-overflow: ellipsis;
@@ -322,14 +337,14 @@ span.chatlogLink {
 .windowbuttonserver:extend(.windowbutton) {
     .windowbutton_maincell:extend(.windowbutton_maincell) {
         text-transform: uppercase;
-        color: #BBB;
+        color: @headers;
         font-size: 10px !important;
         font-weight: 400;
     }
 }
 
 .windowbutton_current .windowbutton_maincell {
-    color: #2D7DDC !important;
+    color: @highlight !important;
 }
 
 .sidebutton_iconinner {
@@ -343,39 +358,39 @@ span.chatlogLink {
 
     line-height: 14px;
 
-	&_alert:extend(.sidebutton_iconinner) {
-		background-color: @alert;
-        text-shadow: 0 1px #888;        
-	}
-
-	&_event:extend(.sidebutton_iconinner) {
-		background-color: #CACACA;
-        text-shadow: 0 1px #888;        
-	}
-
-	&_close:extend(.sidebutton_iconinner) {
-		font-family: 'FontAwesome';
-        font-size: 14px;
-		&:before {
-			content: '\f00d';
+		&_alert:extend(.sidebutton_iconinner) {
+			background-color: @alert;
+    	text-shadow: 0 1px #888;
 		}
-	}
 
-	&_addserver:extend(.sidebutton_iconinner) {
-		font-family: 'FontAwesome';
-        font-size: 14px;
-		&:before {
-			content: '\f067';
+		&_event:extend(.sidebutton_iconinner) {
+			background-color: @dim2;
+    	text-shadow: 0 1px #888;
 		}
-	}
 
-	&_options:extend(.sidebutton_iconinner) {
-		font-family: 'FontAwesome';
-        font-size: 14px;
-		&:before {
-			content: '\f0c9';
+		&_close:extend(.sidebutton_iconinner) {
+			font-family: 'FontAwesome';
+    	font-size: 14px;
+			&:before {
+				content: '\f00d';
+			}
 		}
-	}
+
+		&_addserver:extend(.sidebutton_iconinner) {
+			font-family: 'FontAwesome';
+      font-size: 14px;
+			&:before {
+				content: '\f067';
+			}
+		}
+
+		&_options:extend(.sidebutton_iconinner) {
+			font-family: 'FontAwesome';
+      font-size: 14px;
+			&:before {
+				content: '\f0c9';
+			}
+		}
 }
 
 // Activities
@@ -397,9 +412,8 @@ span.chatlogLink {
     flex: 0 0 auto;
     width: 20px;
     height: 20px;
-    //background-color: #fcc;
     text-align: center;
-    
+
     .dot {
         width: 8px;
         height: 8px;
@@ -415,15 +429,13 @@ span.chatlogLink {
         font-family: 'FontAwesome';
         font-size: 9px;
     }
-    .circle {  
-        //background-color: #FFF !important;
+    .circle {
         width: 4px;
         height: 4px;
         border-radius: 4px;
         margin: 6px;
     }
-    .circlethin {  
-        background-color: #FFF !important;
+    .circlethin {
         width: 6px;
         height: 6px;
         border-radius: 4px;
@@ -444,23 +456,33 @@ span.chatlogLink {
         font-size: 9px;
         padding: 0 5px;
     }
-    
+
 }
 
+// god, this whole fucking thing is a mess
+
 .coltext {
-    color: #262626;
-    flex: 1 1 auto;
-	.white-space(pre-wrap);
-	word-wrap: break-word;
+	  color: @chattext;
+	  flex: 1 1 auto;
+		.white-space(pre-wrap);
+		word-wrap: break-word;
 }
 
 .coltext .coldot {
     display: inline-flex;
-    margin-left: 1px;
+    //margin-left: 1px;
+}
+
+.dim1 {
+		color: @dim1;
 }
 
 .dim2 {
-    color: #d8d8d8;
+    color: @dim2;
+}
+
+.dim3 {
+		color: @dim3;
 }
 
 .nick {
@@ -470,14 +492,14 @@ span.chatlogLink {
 .coltime {
     flex: 0 0 auto;
     font-size: 9px;
-    color: #CACACA;
+    color: @dim2;
     padding-left: 4px;
 }
 
 
 .activity_notice {
     .colnick, .coltext, .coldot {
-        color: #AD75F4;
+        color: @notice;
     }
 }
 
@@ -492,7 +514,7 @@ span.chatlogLink {
 
 .activity_mentionme {
     .colnick, .coltext, .coldot {
-        color: #FE9700;
+        color: @mention;
     }
 }
 
@@ -509,7 +531,7 @@ span.chatlogLink {
 
 .activity_dim {
     .colnick, .coltext, .coldot {
-        color: @dim1;
+        color: @dim2;
     }
 }
 
@@ -534,17 +556,17 @@ span.chatlogLink {
         color: @joinarrow;
     }
     .coltext {
-        color: @dim1;
+        color: @dim2;
     }
 }
 
 .activity_part {
     .colnick {
         font-family: 'FontAwesome';
-        color: @alert;
+        color: @partarrow;
     }
     .coltext {
-        color: @dim1;
+        color: @dim2;
     }
 }
 
@@ -552,4 +574,3 @@ span.chatlogLink {
 	.white-space(pre-wrap);
 	word-wrap: break-word;
 }
-

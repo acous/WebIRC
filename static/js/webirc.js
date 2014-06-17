@@ -454,7 +454,7 @@ webircApp.directive('chatlog', function() {
 				return fourCol('activity_error', null, colDot('warn', 'red'), activity.text);
 			},
 			'Info': function(activity) {
-				return fourCol('activity_dim', null, colDot('info', '#DDD'), activity.text);
+				return fourCol('activity_dim', null, colDot('info', null), activity.text);
 			},
 			'Join': function(activity) {
 				return fourCol('activity_join', '', colDot('dot', getNickColor(activity.who.nick)), displayNick(activity.who.nick), ' ', displayHost(), ' joined');
@@ -585,7 +585,7 @@ webircApp.directive('chatlog', function() {
 		}
 
 		function displayDim(msg) {
-			return angular.element('<span />').addClass('dim2').append(msg);
+			return angular.element('<span />').addClass('dim3').append(msg);
 		}
 		function displayNick(msg) {
 			return angular.element('<span />').addClass('nick').append(msg);
