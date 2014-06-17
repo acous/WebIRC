@@ -5,7 +5,7 @@
 This is a new concept for an always-on web-based IRC client. WebIRC runs as a server and is always connected to your favorite IRC networks. Seamlessly open the same session from home, work, and your mobile devices to continue exactly where you left off.
 
 ## Screenshot
-![screenshot](https://dl.dropboxusercontent.com/u/103004/webirc0.11.png)
+![screenshot](https://dl.dropboxusercontent.com/u/103004/webirc0.12.png)
 
 
 ## Setting it up

@@ -30,7 +30,7 @@
 @mainbg: #111;
 @maintext: #a2a2a2;
 @chattext: #ccc;
-@nickname: #ababab;
+@nickname: #888;
 @headers: #666;
 
 @dim1: #666;
@@ -53,7 +53,7 @@ body {
 	background-color: @mainbg;
 	color: @maintext;
 	font-family: 'Helvetica Neue', sans-serif;
-  font-size: 12px;
+	font-size: 12px;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	line-height: 20px;
@@ -151,13 +151,13 @@ input {
 	display: table-cell;
 	width: 160px;
 	padding: 8px 10px 10px 0px;
-  background-color: @leftbg;
+	background-color: @leftbg;
 }
 
 .rightcell {
 	display: table-cell;
 	vertical-align: bottom;
-  padding: 0;
+	padding: 0;
 }
 
 // Chatlog and userlist
@@ -198,16 +198,16 @@ span.chatlogLink {
 .userlistcell {
 	display: table-cell;
 	width: 140px;
-  color: @nickname;
+	color: @nickname;
 	vertical-align: bottom;
 }
 
 .userlistheader {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: @headers;
-    font-size: 10px;
-    font-weight: 400;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: @headers;
+	font-size: 10px;
+	font-weight: 400;
 }
 
 .userlistentry {
@@ -220,23 +220,20 @@ span.chatlogLink {
 // Chatbox
 
 .chatboxwrapper {
-    box-sizing: border-box;
-    padding: 3px;
-    border: 1px @dim3 solid;
-    //border-radius: 4px;
-		border-left: none;
-		border-bottom: none;
-    height: 25px;
+	box-sizing: border-box;
+	padding: 3px;
+	border-top: 1px @dim3 solid;
+	height: 25px;
 }
 .chatbox, .chatboxshadow {
-    box-sizing: border-box;
-    border: none;
-		font: inherit;
-		resize: none;
-		background-color: @mainbg;
-		color: @maintext;
-		outline: none;
-		vertical-align: top;
+	box-sizing: border-box;
+	border: none;
+	font: inherit;
+	resize: none;
+	background: none;
+	color: @maintext;
+	outline: none;
+	vertical-align: top;
 }
 .chatbox {
 	width: 100%;
@@ -260,7 +257,7 @@ span.chatlogLink {
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-    line-height: 0;
+	line-height: 0;
 	&:active {
 		position: relative;
 		top: 1px;
@@ -273,11 +270,11 @@ span.chatlogLink {
 	&_iconcell {
 		display: table-cell;
 		width: 21px;
-    text-overflow: ellipsis;
-    color: @maintext;
+		text-overflow: ellipsis;
+		color: @maintext;
 		vertical-align: middle;
-    height: 21px;
-    font-size: 10px;
+		height: 21px;
+		font-size: 10px;
 
 		.sidebutton_iconinner_addserver {
 			color: @maintext;
@@ -290,7 +287,6 @@ span.chatlogLink {
 		.sidebutton_iconinner_close {
 			color: @maintext;
 		}
-
 	}
 }
 
@@ -304,10 +300,10 @@ span.chatlogLink {
 	.sidebutton_iconcell {
 		cursor: pointer;
 	}
-    .sidebutton_iconinner_addserver {
-        text-align: left;
-        padding-left: 12px;
-    }
+	.sidebutton_iconinner_addserver {
+		text-align: left;
+		padding-left: 12px;
+	}
 }
 
 .windowbutton:extend(.sidebutton) {
@@ -317,14 +313,13 @@ span.chatlogLink {
 	}
 
 	&_current {
-        color: @highlight;
-        font-weight: 400;
-        //height: 10px;
+		color: @highlight;
+		font-weight: 400;
 	}
 
 	&_maincell {
 		display: table-cell;
-    font-size: 14px;
+		font-size: 14px;
 		height: 15px;
 		padding: 3px 0 3px 12px;
 		text-overflow: ellipsis;
@@ -335,242 +330,272 @@ span.chatlogLink {
 }
 
 .windowbuttonserver:extend(.windowbutton) {
-    .windowbutton_maincell:extend(.windowbutton_maincell) {
-        text-transform: uppercase;
-        color: @headers;
-        font-size: 10px !important;
-        font-weight: 400;
-    }
+	.windowbutton_maincell:extend(.windowbutton_maincell) {
+		text-transform: uppercase;
+		color: @headers;
+		font-size: 10px !important;
+		font-weight: 400;
+	}
 }
 
 .windowbutton_current .windowbutton_maincell {
-    color: @highlight !important;
+	color: @highlight !important;
 }
 
 .sidebutton_iconinner {
-    color: #FFF;
-    font-size: 9px;
-    text-align: center;
-    margin: 0;
-    padding: 3px auto;
-    height: 14px;
-    border-radius: 7px;
+	color: #FFF;
+	font-size: 9px;
+	text-align: center;
+	margin: 0;
+	padding: 3px auto;
+	height: 14px;
+	border-radius: 7px;
 
-    line-height: 14px;
+	line-height: 14px;
 
-		&_alert:extend(.sidebutton_iconinner) {
-			background-color: @alert;
-    	text-shadow: 0 1px #888;
+	&_alert:extend(.sidebutton_iconinner) {
+		background-color: @alert;
+		text-shadow: 0 1px #888;
+	}
+
+	&_event:extend(.sidebutton_iconinner) {
+		background-color: @dim2;
+		text-shadow: 0 1px #888;
+	}
+
+	&_close:extend(.sidebutton_iconinner) {
+		font-family: 'FontAwesome';
+		font-size: 14px;
+		&:before {
+			content: '\f00d';
 		}
+	}
 
-		&_event:extend(.sidebutton_iconinner) {
-			background-color: @dim2;
-    	text-shadow: 0 1px #888;
+	&_addserver:extend(.sidebutton_iconinner) {
+		font-family: 'FontAwesome';
+		font-size: 14px;
+		&:before {
+			content: '\f067';
 		}
+	}
 
-		&_close:extend(.sidebutton_iconinner) {
-			font-family: 'FontAwesome';
-    	font-size: 14px;
-			&:before {
-				content: '\f00d';
-			}
+	&_options:extend(.sidebutton_iconinner) {
+		font-family: 'FontAwesome';
+		font-size: 14px;
+		&:before {
+			content: '\f0c9';
 		}
-
-		&_addserver:extend(.sidebutton_iconinner) {
-			font-family: 'FontAwesome';
-      font-size: 14px;
-			&:before {
-				content: '\f067';
-			}
-		}
-
-		&_options:extend(.sidebutton_iconinner) {
-			font-family: 'FontAwesome';
-      font-size: 14px;
-			&:before {
-				content: '\f0c9';
-			}
-		}
+	}
 }
 
 // Activities
 
 .activityblock {
-    display: flex;
-    justify-content: space-between;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
 }
+
 .colnick {
-    text-align: right;
-    color: @nickname;
-    flex: 0 0 100px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+	-webkit-flex: 0 0 100px;
+	flex: 0 0 100px;
+	text-align: right;
+	color: @nickname;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .coldot {
-    flex: 0 0 auto;
-    width: 20px;
-    height: 20px;
-    text-align: center;
+	-webkit-flex: 0 0 auto;
+	flex: 0 0 auto;
+	width: 20px;
+	height: 20px;
+	text-align: center;
 
-    .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 4px;
-        margin: 6px;
-    }
-    .pipe {
-        width: 4px;
-        height: 10px;
-        margin: 5px 8px 5px 8px;
-    }
-    .info {
-        font-family: 'FontAwesome';
-        font-size: 9px;
-    }
-    .circle {
-        width: 4px;
-        height: 4px;
-        border-radius: 4px;
-        margin: 6px;
-    }
-    .circlethin {
-        width: 6px;
-        height: 6px;
-        border-radius: 4px;
-        margin: 6px;
-    }
-    .three {
-        font-family: 'FontAwesome';
-        font-size: 12px;
-        padding: 1px 5px 0;
-    }
-    .warn {
-        font-family: 'FontAwesome';
-        font-size: 10px;
-        padding: 0 7px;
-    }
-    .star {
-        font-family: 'FontAwesome';
-        font-size: 9px;
-        padding: 0 5px;
-    }
-
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 4px;
+		margin: 6px;
+	}
+	.pipe {
+		width: 4px;
+		height: 10px;
+		margin: 5px 8px 5px 8px;
+	}
+	.info {
+		font-family: 'FontAwesome';
+		font-size: 9px;
+	}
+	.circle {
+		width: 4px;
+		height: 4px;
+		border-radius: 4px;
+		margin: 6px;
+	}
+	.circlethin {
+		width: 6px;
+		height: 6px;
+		border-radius: 4px;
+		margin: 6px;
+	}
+	.three {
+		font-family: 'FontAwesome';
+		font-size: 12px;
+		padding: 1px 5px 0;
+	}
+	.warn {
+		font-family: 'FontAwesome';
+		font-size: 10px;
+		padding: 0 7px;
+	}
+	.star {
+		font-family: 'FontAwesome';
+		font-size: 8px;
+		padding: 0 6px;
+	}
 }
 
 // god, this whole fucking thing is a mess
 
 .coltext {
-	  color: @chattext;
-	  flex: 1 1 auto;
-		.white-space(pre-wrap);
-		word-wrap: break-word;
+	color: @chattext;
+	-webkit-flex: 1 1 auto;
+	flex: 1 1 auto;
+	.white-space(pre-wrap);
+	word-wrap: break-word;
 }
 
 .coltext .coldot {
-    display: inline-flex;
-    //margin-left: 1px;
+	display: -webkit-inline-flex;
+	display: inline-flex;
 }
 
 .dim1 {
-		color: @dim1;
+	color: @dim1;
 }
 
 .dim2 {
-    color: @dim2;
+	color: @dim2;
 }
 
 .dim3 {
-		color: @dim3;
+	color: @dim3;
 }
 
 .nick {
-    color: @nickname;
+	color: @nickname;
 }
 
 .coltime {
-    flex: 0 0 auto;
-    font-size: 9px;
-    color: @dim2;
-    padding-left: 4px;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex: 0 0 auto;
+	flex: 0 0 auto;
+	font-size: 9px;
+	color: @dim2;
+	padding-left: 4px;
+	padding-top: 1px;
 }
 
 
 .activity_notice {
-    .colnick, .coltext, .coldot {
-        color: @notice;
-    }
+	.colnick, .coltext, .coldot {
+		color: @notice;
+	}
 }
 
 .activity_error {
-    .colnick, .coltext, .coldot {
-        color: @alert;
-    }
-    .colnick {
-        font-family: 'FontAwesome';
-    }
+	.colnick, .coltext, .coldot {
+		color: @alert;
+	}
+	.colnick {
+		font-family: 'FontAwesome';
+	}
 }
 
 .activity_mentionme {
-    .colnick, .coltext, .coldot {
-        color: @mention;
-    }
+	.colnick, .coltext, .coldot {
+		color: @mention;
+	}
 }
 
 
 .activity_info {
-    .colnick, .coltext, .coldot {
-        color: @info;
-    }
-    .colnick {
-        text-transform: uppercase;
-        font-size: 10px;
-    }
+	.colnick, .coltext, .coldot {
+		color: @info;
+	}
+	.colnick {
+		text-transform: uppercase;
+		font-size: 9px;
+		padding-top: 1px;
+	}
 }
 
 .activity_dim {
-    .colnick, .coltext, .coldot {
-        color: @dim2;
-    }
+	.colnick, .coltext, .coldot {
+		color: @dim2;
+	}
 }
 
 .activity_whois {
-    .colnick, .coltext, .coldot {
-        color: @whois;
-    }
+	.colnick, .coltext, .coldot {
+		color: @whois;
+	}
 }
 
 .activity_mychat {
-    .colnick {
-        color: @highlight;
-    }
-    .nick {
-        color: @highlight;
-    }
+	.colnick {
+		color: @highlight;
+	}
+	.nick {
+		color: @highlight;
+	}
 }
 
 .activity_join {
-    .colnick {
-        font-family: 'FontAwesome';
-        color: @joinarrow;
-    }
-    .coltext {
-        color: @dim2;
-    }
+	.colnick {
+		font-family: 'FontAwesome';
+		color: @joinarrow;
+	}
+	.coltext {
+		color: @dim2;
+	}
 }
 
 .activity_part {
-    .colnick {
-        font-family: 'FontAwesome';
-        color: @partarrow;
-    }
-    .coltext {
-        color: @dim2;
-    }
+	.colnick {
+		font-family: 'FontAwesome';
+		color: @partarrow;
+	}
+	.coltext {
+		color: @dim2;
+	}
 }
 
 .activity {
 	.white-space(pre-wrap);
 	word-wrap: break-word;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.2);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	border: 1px solid @dim3;
+	background: rgba(255,255,255,0.1);
 }
